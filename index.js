@@ -104,7 +104,10 @@ async function run() {
     // post blog role
     app.post("/blogs/admin", async (req, res) => {
       const blog = req.body;
-      const result = await AdminCollection.insertOne(blog);
+      const result = await AdminCollection.insertOne({
+        blog,
+        createdAt: new Date(),
+      });
       res.send(result);
       console.log(result);
     });
