@@ -88,6 +88,7 @@ async function run() {
           imageLink: blogs.imageLink,
           category: blogs.category,
           author: blogs.author,
+          createdAt: blogs.createdAt,
         },
       };
       const result = await blogCollection.updateOne(
