@@ -34,7 +34,7 @@ async function run() {
     await client.connect();
     const database = client.db("devsBlogDB");
     const blogCollection = database.collection("blogs");
-    // const AdminCollection = database.collection("Admin");
+    const adminCollection = database.collection("admin");
 
     // here all crud oparation
 
