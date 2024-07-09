@@ -50,8 +50,12 @@ async function run() {
 
     // get  all data
     app.get("/blog", async (req, res) => {
-      // res.send(blogs);
-      const cusor = blogCollection.find();
+      console.log(req.query);
+      let query = {};
+      if (req.query?.authorEmail) {
+        query = { authorEmail: req.query.authorEmail };
+      }
+      const cusor = blogCollection.find(query);
       const result = await cusor.toArray();
       res.send(result);
     });
@@ -64,6 +68,17 @@ async function run() {
       const result = await blogCollection.findOne(query);
       res.send(result);
     });
+
+    // get data quary
+
+    // app.get("/blog/", async (req, res) => {
+    //   console.log(req.query);
+
+    //   const cusor = blogCollection.find();
+    //   const result = await cusor.toArray();
+    //   res.send(result);
+    // });
+
     // Delete the first document in  collection
 
     app.delete("/blog/:id", async (req, res) => {
